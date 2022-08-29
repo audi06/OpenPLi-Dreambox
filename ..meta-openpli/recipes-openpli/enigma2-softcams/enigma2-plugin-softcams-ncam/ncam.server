@@ -1,0 +1,198 @@
+#### "*******************************************"
+#### "*          << RAED - fairbird >>          *"
+#### "* Read more: https://www.tunisia-sat.com  *"
+#### "*******************************************"
+#### "****************************************************************"             
+#### "*Read more: https://www.tunisia-sat.com/forums/threads/3539021/*"
+#### "****************************************************************"
+
+####################### SoftCams ########################
+
+[reader]
+label                         = constant.cw
+enable                        = 1
+protocol                      = constcw
+device                        = /etc/tuxbox/config/constant.cw
+caid                          = 2600,0B00,0B02,0500,0963,06AD,0940
+group                         = 1
+
+[reader]
+label                         = Device_SoftCam
+enable                        = 1
+protocol                      = emu
+device                        = emulator
+#device                        = /etc/tuxbox/config/SoftCam.key  (if you want to set your personal path)
+disablecrccws_only_for        = 0E00:000000
+caid                          = 0E00,0500,0604,090F,1010,1801,2600,4AE1
+detect                        = cd
+ident                         = 0500:000000,007400,007800,021110,023800;0604:000000;090F:000000;0E00:000000;1010:000000;1801:000000,001101,002111,007301;2600:000000;4AE1:000011,000014,0000FE
+group                         = 1
+emmcache                      = 2,1,2,1
+emu_auproviders               = 0604:010200;0E00:000000;1010:000000;4AE1:000011,000014,0000FE
+
+[reader]
+label                         = Internet_SoftCam
+enable                        = 1
+protocol                      = emu
+device                        = https://raw.githubusercontent.com/smcam/s/main/SoftCam.Key
+disablecrccws_only_for        = 0E00:000000
+caid                          = 0500,0604,090F,0E00,1010,1801,2600,2602,2610,4AE1
+detect                        = cd
+ident                         = 0500:000000,007400,007800,021110,023800;0604:000000;090F:000000;0E00:000000;1010:000000;1801:000000,001101,002111,007301;2600:000000;2602:000000;2610:000000;4AE1:000011,000014,0000FE
+group                         = 1
+emmcache                      = 2,1,2,1
+emu_auproviders               = 0604:010200;0E00:000000;1010:000000;2610:000000;4AE1:000011,000014,0000FE
+
+[reader]
+### This reader automatically downloads afn keys into memory if label = github:"and path" and if the keys are invalid or missing from the SoftCam.Key file. If you want to find the keys, use debug 2 or 4.
+### If the downloaded keys are invalid or expired, the reader will automatically download them again after 5 minutes, no need to restart ncam or use external scripts.
+
+#label                         = github:"and path"
+label                         = github:JetCamFastCam/JetFastCamRza/main/SoftCam.Key
+enable                        = 1
+protocol                      = emu
+#device                        = emulator
+device                        = https://raw.githubusercontent.com/JetCamFastCam/JetFastCamRza/main/SoftCam.Key
+disablecrccws_only_for        = 0E00:000000
+caid                          = 0500,0604,090F,0E00,1010,1801,2600,2602,2610,4AE1
+detect                        = cd
+ident                         = 0500:000000,007400,007800,021110,023800;0604:000000;090F:000000;0E00:000000;1010:000000;1801:000000,001101,002111,007301;2600:000000;2602:000000;2610:000000;4AE1:000011,000014,0000FE
+group                         = 1
+emmcache                      = 2,1,2,1
+emu_auproviders               = 0604:010200;0E00:000000;1010:000000;2610:000000;4AE1:000011,000014,0000FE
+
+[reader]
+label                         = github:smcam/s/main/SoftCam.Key
+enable                        = 1
+protocol                      = emu
+device                        = emulator
+disablecrccws_only_for        = 0E00:000000
+caid                          = 0500,0604,090F,0E00,1010,1801,2600,2602,2610,4AE1
+detect                        = cd
+ident                         = 0500:000000,007400,007800,021110,023800;0604:000000;090F:000000;0E00:000000;1010:000000;1801:000000,001101,002111,007301;2600:000000;2602:000000;2610:000000;4AE1:000011,000014,0000FE
+group                         = 1
+emmcache                      = 2,1,2,1
+emu_auproviders               = 0604:010200;0E00:000000;1010:000000;2610:000000;4AE1:000011,000014,0000FE
+
+############ This is prive reader don't change it or remove it ############
+[reader]
+label                         = linuxsat-support.com
+enable                        = 1
+protocol                      = emu
+device                        = emulator
+#device                        = http...
+disablecrccws_only_for        = 0E00:000000
+caid                          = 0500,0604,090F,0E00,1010,1801,2600,2602,2610,4AE1
+detect                        = cd
+ident                         = 0500:000000,007400,007800,021110,023800;0604:000000;090F:000000;0E00:000000;1010:000000;1801:000000,001101,002111,007301;2600:000000;2602:000000;2610:000000;4AE1:000011,000014,0000FE
+group                         = 1
+emmcache                      = 2,1,2,1
+emu_auproviders               = 0604:010200;0E00:000000;1010:000000;2610:000000;4AE1:000011,000014,0000FE
+
+####################### Card ############################
+
+[reader]
+label                         = lower_card
+enable                        = 1
+protocol                      = internal
+device                        = /dev/sci0
+#ecmwhitelist                  = 0100@00006A:64
+#ecmheaderwhitelist            = 800061006A00075C00,800061006A01075C00,803061006A00075C00,803061006A01075C00,810061006A00075C00,810061006A01075C00,813061006A00075C00,813061006A01075C00
+detect                        = cd
+group                         = 1
+emmcache                      = 1,3,15
+audisabled                    = 0
+mhz                           = 357
+cardmhz                       = 2700
+ratelimitecm                  = 4
+ratelimittime                 = 10000
+ecmunique                     = 1
+srvidholdtime                 = 2000
+cooldown                      = 30,600
+
+
+[reader]
+label                         = upper_card
+enable                        = 1
+protocol                      = internal
+device                        = /dev/sci1
+#ecmwhitelist                  = 0100@00006A:64
+#ecmheaderwhitelist            = 800061006A00075C00,800061006A01075C00,803061006A00075C00,803061006A01075C00,810061006A00075C00,810061006A01075C00,813061006A00075C00,813061006A01075C00
+detect                        = cd
+group                         = 1
+emmcache                      = 1,3,15
+audisabled                    = 0
+mhz                           = 357
+cardmhz                       = 2700
+ratelimitecm                  = 4
+ratelimittime                 = 10000
+ecmunique                     = 1
+srvidholdtime                 = 2000
+cooldown                      = 30,600
+
+[reader]
+label                         = Mainreceiver
+enable			                  = 0
+protocol                      = cs378x
+device                        = ip_adress_mainreceiver,12005
+user                          = 2nd_box
+password                      = 2nd_box
+group                         = 1
+
+####################### CCcam ############################
+
+[reader]
+label                         = cccam_server
+protocol                      = cccam
+device                        = host,port
+user                          = user
+password                      = pass
+group                         = 1,2,3,4,5,6,7,8,9,10,64
+emmcache                      = 2,1,2,1
+cccversion                    = 2.0.11
+ccckeepalive                  = 1
+cccmaxhops                    = 2 # dont use higher than 3 !!!
+disablecrccws                 = 1
+cccwantemu                    = 1
+blockemm-unknown              = 1
+blockemm-u                    = 1
+blockemm-s                    = 1
+blockemm-g                    = 1
+audisabled                    = 1
+services                      = !powervu_fake,!tandberg_fake,!biss_fake,!afn_fake,1708:000000
+disablecrccws_only_for        = 1709:000000;1708:000000;1811:003311,003315;09C4:000000;0500:030B00,042820;0604:000000;1819:00006D;0100:00006D;1810:000000;1884:000000;0E00:000000
+
+####################### MgCamd ############################
+
+[reader]
+label                         = mgcamd_server
+enable                        = 1
+protocol                      = mgcamd
+device                        = host,port
+key                           = 0102030405060708091011121314
+user                          = user
+password                      = pass
+services                      = !powervu_fake,!tandberg_fake,!biss_fake,!afn_fake,1708:000000
+inactivitytimeout             = -1
+group                         = 1,2,3,4,5,6,7,8,9,10,64
+fallback                      = 1
+disablecrccws                 = 1
+audisabled                    = 1
+disablecrccws_only_for        = 1709:000000;1708:000000;1811:003311,003315;09C4:000000;0500:030B00,042820;0604:000000;1819:00006D;0100:00006D;1810:000000;1884:000000;0E00:000000
+
+####################### Newcamd ############################
+
+[reader]
+label                         = newcamd_server
+enable                        = 1
+protocol                      = newcamd
+device                        = host,port
+key                           = 0102030405060708091011121314
+user                          = user
+password                      = pass
+services                      = !powervu_fake,!tandberg_fake,!biss_fake,!afn_fake,1708:000000
+fallback                      = 1
+group                         = 1,2,3,4,5,6,7,8,9,10,64
+disablecrccws                 = 1
+audisabled                    = 1
+disablecrccws_only_for        = 1709:000000;1708:000000;1811:003311,003315;09C4:000000;0500:030B00,042820;0604:000000;1819:00006D;0100:00006D;1810:000000;1884:000000;0E00:000000

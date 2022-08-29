@@ -1,3 +1,4 @@
+SUMMARY = "A template for writing your own GStreamer plug-in"
 DESCRIPTION = "A template for writing your own GStreamer plug-in"
 MAINTAINER = "samsamsam"
 
@@ -10,8 +11,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/OpenVisionE2/gst-ifdsrc.git;protocol=https;branch=master"
+SRC_URI = "git://gitlab.com/e2i/gst-ifdsrc.git;protocol=https;branch=master"
 
-S = "${WORKDIR}/git/gst-ifdsrc/gst-ifdsrc"
+S = "${WORKDIR}/git"
 
 FILES:${PN} += "${libdir}/gstreamer-1.0"

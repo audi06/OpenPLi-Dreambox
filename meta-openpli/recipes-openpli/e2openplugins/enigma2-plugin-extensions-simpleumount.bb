@@ -9,3 +9,6 @@ PR = "r0"
 
 require conf/license/license-gplv2.inc
 require openplugins-distutils.inc
+
+SRC_URI = "git://gitlab.com/jack2015/e2openplugin-SimpleUmount.git;protocol=https;branch=master"
+

@@ -9,14 +9,20 @@ inherit gitpkgv distutils-openplugins
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
-SRC_URI = "git://github.com/OpenViX/HRTunerProxy.git;protocol=https;branch=master \
-           file://replace-distutils-with-setuptools.patch \
-"
+SRC_URI = "git://gitlab.com/jack2015/HRTunerProxy.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
 RCONFLICTS:${PN} = "enigma2-plugin-systemplugins-plexdvrapi"
 RREPLACES:${PN} = "enigma2-plugin-systemplugins-plexdvrapi"
+
+RDEPENDS:${PN} = " \
+    python-argparse \
+    "
+
+do_install:prepend() {
+    echo ${GITPKGVTAG} | awk -F"-" '{print $1}'> ${S}/build/lib/SystemPlugins/HRTunerProxy/PLUGIN_VERSION
+}
 
 python populate_packages:prepend() {
     e2_pdir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)

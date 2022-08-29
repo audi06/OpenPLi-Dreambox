@@ -2,9 +2,10 @@ DESCRIPTION = "Blindscan dvb-s(2) satellites using stv090x devices"
 SECTION = "base"
 PRIORITY = "optional"
 LICENSE = "PD"
-LIC_FILES_CHKSUM = "file://README.md;md5=b69b6d0feee577047e07a832c67d8076"
+LIC_FILES_CHKSUM = "file://README.md;md5=f084bf390249474bef1b8817e83757fa"
 
-SRC_URI = "git://github.com/OpenVisionE2/blindscan-s2.git;protocol=https;branch=master"
+SRC_URI = "git://gitlab.com/jack2015/blindscan-s2.git;protocol=https;branch=master \
+	file://support-enigma2.patch"
 
 inherit gitpkgv
 PV = "1+git${SRCPV}"

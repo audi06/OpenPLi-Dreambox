@@ -13,18 +13,17 @@ LIC_FILES_CHKSUM = "\
 
 inherit gitpkgv
 
-AUTOBOUQUETS_BRANCH ?= "release"
 PV = "2.2+git${SRCPV}"
 PKGV = "2.2+git${GITPKGV}"
 PR = "r0"
 
-INSANE_SKIP:${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped ldflags"
 
-SRC_URI = "git://github.com/LraiZer/AutoBouquets.git;branch=${AUTOBOUQUETS_BRANCH};protocol=https"
+SRC_URI="git://gitlab.com/jack2015/AutoBouquets.git;protocol=https;branch=release"
 
 S = "${WORKDIR}/git"
 
-FILES:${PN} = "${libdir}/enigma2/python/Plugins/Extensions/AutoBouquets"
+FILES:${PN} = "/usr/lib/enigma2/python/Plugins/Extensions/AutoBouquets"
 D_FILES_PN = "${D}${FILES:${PN}}"
 
 EXTRA_OECONF = ""
@@ -45,3 +44,43 @@ do_install() {
     install -m 644 ${S}/locale/ru/LC_MESSAGES/*.* ${D_FILES_PN}/locale/ru/LC_MESSAGES
 }
 
+pkg_preinst:${PN}() {
+#!/bin/sh
+
+echo "Checking for an older version of ${PN}"
+
+if [ -d ${FILES:${PN}} ]; then
+	rm -rf ${FILES:${PN}} > /dev/null 2>&1
+	echo "An older version of ${PN} was found and removed"
+else
+	echo "${PN} was not found"
+fi
+
+echo "Proceeding to installation..."
+
+exit 0
+
+}
+
+pkg_postinst:${PN}() {
+#!/bin/sh
+
+echo "*                               *"
+echo "* plugin installed successfully *"
+echo "*                               *"
+echo "* Enigma2 restart is required!  *"
+echo "*                               *"
+
+exit 0
+
+}
+
+pkg_postrm:${PN}() {
+#!/bin/sh
+
+echo "Removing ${PN}"
+rm -rf ${FILES:${PN}} > /dev/null 2>&1
+
+exit 0
+
+}

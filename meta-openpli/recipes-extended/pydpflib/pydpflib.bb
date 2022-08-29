@@ -3,13 +3,13 @@ MAINTAINER = "https://sourceforge.net/projects/pydpf/"
 LICENSE = "LGPL-2.0-only"
 LIC_FILES_CHKSUM = "file://PKG-INFO;md5=6a256fd20875b5cf06888bbcbe1a21aa"
 
-SRC_URI = "git://github.com/athoik/pydpflib.git;protocol=https;branch=master"
+SRC_URI = "git://gitlab.com/jack2015/pydpflib.git;protocol=https;branch=master"
 
 DEPENDS = "libusb"
 
 S = "${WORKDIR}/git"
 
-inherit gitpkgv setuptools3
+inherit gitpkgv setuptools
 
 PV = "0.14+git${SRCPV}"
 PKGV = "0.14+git${GITPKGV}"

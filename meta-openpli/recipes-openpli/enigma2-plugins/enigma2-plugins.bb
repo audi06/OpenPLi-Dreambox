@@ -16,22 +16,22 @@ PACKAGES += "\
 	enigma2-plugin-extensions-transmission \
 	enigma2-plugin-systemplugins-systemtime \
 	"
-
 RDEPENDS:enigma2-plugin-extensions-mosaic = "aio-grab"
-RDEPENDS:enigma2-plugin-extensions-fancontrol2 = "smartmontools hdparm"
+RDEPENDS:enigma2-plugin-extensions-fancontrol2 = ""
 RDEPENDS:enigma2-plugin-extensions-bonjour = "avahi-daemon"
 
 RRECOMMENDS:enigma2-plugin-systemplugins-blindscan = "virtual/blindscan-dvbs"
 RRECOMMENDS:enigma2-plugin-systemplugins-systemtime = "ntpdate"
 RRECOMMENDS:enigma2-plugin-extensions-transmission = "transmission transmission-client"
 
-inherit gitpkgv python3native pkgconfig
+inherit gitpkgv pythonnative pkgconfig
 
-PV = "2.0-git${SRCPV}"
-PKGV = "2.0-git${GITPKGV}"
+PV = "y-git${SRCPV}"
+PKGV = "y-git${GITPKGV}"
 
-GITHUB_URI ?= "git://github.com"
-SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git;branch=python3;protocol=https"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
+SRC_URI = "${GIT_SITE}/enigma2-plugins.git;protocol=https;branch=master"
 
 EXTRA_OECONF = " \
 	BUILD_SYS=${BUILD_SYS} \
@@ -63,25 +63,22 @@ inherit autotools-brokensep
 S = "${WORKDIR}/git"
 
 DEPENDS = " \
-	python3-pyopenssl \
+	python-pyopenssl \
 	streamripper \
-	python3-mutagen \
-	python3-twisted \
-	python3-daap \
+	python-mutagen \
+	python-twisted \
+	python-daap \
 	libcddb \
 	dvdbackup \
 	libtirpc \
 	"
-
-do_compile() {
-	python3 -m compileall ${S}
-}
 
 CFLAGS += "-I${STAGING_INCDIR}/tirpc"
 
 python populate_packages:prepend () {
     enigma2_plugindir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/[a-zA-Z0-9_]+.*$', 'enigma2-plugin-%s', '%s', recursive=True, match_path=True, prepend=True)
+    do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.py$', 'enigma2-plugin-%s-src', '%s (source files)', recursive=True, match_path=True, prepend=True)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.la$', 'enigma2-plugin-%s-dev', '%s (development)', recursive=True, match_path=True, prepend=True)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.a$', 'enigma2-plugin-%s-staticdev', '%s (static development)', recursive=True, match_path=True, prepend=True)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/(.*/)?\.debug/.*$', 'enigma2-plugin-%s-dbg', '%s (debug)', recursive=True, match_path=True, prepend=True)
@@ -99,10 +96,13 @@ python populate_packages:prepend () {
             if line.startswith('Package: '):
                 full_package = line[9:]
             elif line.startswith('Depends: '):
+                # some plugins still reference twisted-* dependencies, these packages are now called python-twisted-*
                 rdepends = []
                 for depend in line[9:].split(','):
                     depend = depend.strip()
-                    if depend.startswith('enigma2') and not depend.startswith('enigma2-'):
+                    if depend.startswith('twisted-'):
+                        rdepends.append(depend.replace('twisted-', 'python-twisted-'))
+                    elif depend.startswith('enigma2') and not depend.startswith('enigma2-'):
                         pass # Ignore silly depends on enigma2 with all kinds of misspellings
                     else:
                         rdepends.append(depend)
@@ -117,7 +117,7 @@ python populate_packages:prepend () {
             elif line.startswith('Conflicts: '):
                 d.setVar('RCONFLICTS:' + full_package, ' '.join(line[11:].split(', ')))
             elif line.startswith('Maintainer: '):
-                d.setVar('MAINTAINER:' + full_package, line[12:])
+                d.setVar('MAINTAINER_' + full_package, line[12:])
 
 
     mydir = d.getVar('D') + "/../git/"
@@ -126,6 +126,8 @@ python populate_packages:prepend () {
 }
 
 do_install:append() {
+	# remove unused .pyc files
+	find ${D}${libdir}/enigma2/python/ -name '*.pyc' -exec rm {} \;
 	# remove leftover webinterface garbage
 	rm -rf ${D}${libdir}/enigma2/python/Plugins/Extensions/WebInterface
 }

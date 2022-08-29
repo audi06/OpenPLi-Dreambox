@@ -1,4 +1,5 @@
 require openpli-image.bb
+require ../../recipes-core/package-index/package-index.bb
 
 KERNEL_WIFI_DRIVERS = " \
 	firmware-carl9170 \
@@ -31,21 +32,21 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-bitrate \
+	enigma2-plugin-extensions-blurayplayer \
 	enigma2-plugin-extensions-cdinfo \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-dvdplayer \
+	enigma2-plugin-extensions-fancontrol2 \
 	enigma2-plugin-extensions-filecommander \
-	enigma2-plugin-extensions-foreca \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
 	enigma2-plugin-extensions-moviecut \
-	enigma2-plugin-extensions-netcaster \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
+	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-extensions-systemtools \
-	enigma2-plugin-extensions-tmbd \
 	enigma2-plugin-extensions-youtube \
 	\
 	enigma2-plugin-softcams-oscam \
@@ -53,7 +54,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-commoninterfaceassignment \
 	enigma2-plugin-systemplugins-fastscan \
-	enigma2-plugin-systemplugins-hdmicec \
 	enigma2-plugin-systemplugins-hotplug \
 	enigma2-plugin-systemplugins-networkbrowser \
 	enigma2-plugin-systemplugins-osd3dsetup \
@@ -69,7 +69,6 @@ ENIGMA2_PLUGINS = " \
 
 DEPENDS += " \
 	enigma2 \
-	package-index \
 	"
 
 IMAGE_INSTALL += " \
@@ -78,9 +77,9 @@ IMAGE_INSTALL += " \
 	enigma2 \
 	libavahi-client \
 	ntpdate \
+	cifs-utils \
 	settings-autorestore \
 	tuxbox-common \
-	wget \
 	${ENIGMA2_PLUGINS} \
 	${KERNEL_WIFI_DRIVERS} \
 	${EXTERNAL_WIFI_DRIVERS} \
