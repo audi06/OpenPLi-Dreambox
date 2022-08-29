@@ -10,3 +10,4 @@
 site.conf
 bblayers.conf
 *~
+/meta-qt6
