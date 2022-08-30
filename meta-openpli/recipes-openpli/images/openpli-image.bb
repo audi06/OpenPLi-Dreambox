@@ -4,9 +4,9 @@ inherit image
 
 IMAGE_INSTALL = "\
 	${ROOTFS_PKGMANAGE} \
-	3rd-party-feed-configs \
 	avahi-daemon \
 	ca-certificates \
+	cifs-utils \
 	distro-feed-configs \
 	dropbear \
 	e2fsprogs-e2fsck \
@@ -26,9 +26,10 @@ IMAGE_INSTALL = "\
 	packagegroup-base \
 	packagegroup-core-boot \
 	parted \
-	python-ipaddress  \
-	python-netifaces \
-	python-pysmb \
+	python3-ipaddress  \
+	python3-netifaces \
+	python3-pysmb \
+	python3-requests \
 	sdparm \
 	tuxbox-common \
 	util-linux-ionice \
@@ -43,7 +44,7 @@ IMAGE_FEATURES += "package-management"
 
 # Remove the mysterious var/lib/opkg/lists that appears to be the result
 # of the installer that populates the rootfs. I wanted to call this
-# rootfs_remove_opkg_leftovers but that fails to parse.
+# rootfs:remove_opkg_leftovers but that fails to parse.
 removeopkgleftovers() {
 	rm -r ${IMAGE_ROOTFS}/var/lib/opkg/lists
 }

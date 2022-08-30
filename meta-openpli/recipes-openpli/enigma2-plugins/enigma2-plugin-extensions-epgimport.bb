@@ -9,16 +9,16 @@ inherit gitpkgv
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-
-SRC_URI = "${GIT_SITE}/enigma2-plugin-extensions-epgimport.git;protocol=https;branch=master"
+GITHUB_URI ?= "git://github.com"
+SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git;protocol=https;branch=master \
+           file://use-setuptools-instead-of-distutils.patch \
+"
 
 S = "${WORKDIR}/git/src"
 
 inherit distutils-openplugins
 
-DEPENDS = "python"
-RDEPENDS:${PN} = "python-compression python-shell python-lzma python-pkgutil"
+RDEPENDS:${PN} = "python3-compression python3-shell python3-pkgutil"
 RRECOMMENDS:${PN} = "${PN}-rytec"
 PACKAGES = "${PN}-dbg ${PN}"
 

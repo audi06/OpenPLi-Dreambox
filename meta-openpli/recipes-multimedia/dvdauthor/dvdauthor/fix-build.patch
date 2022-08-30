@@ -20,4 +20,3 @@ index b843cf4..65bd926 100644
 +AC_CONFIG_FILES(Makefile src/Makefile)
  AC_OUTPUT
 
-

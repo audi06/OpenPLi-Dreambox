@@ -1,58 +1,47 @@
 DESCRIPTION = "pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster"
 LICENSE = "GPL-3.0-only"
-LIC_FILES_CHKSUM = "file://LICENSE.MD;md5=d4333f07cbfa8fe036e90820f556b2ad"
+LIC_FILES_CHKSUM = "file://LICENSE.md;md5=2d20d11c1dccf4454ce811d6bfb05a2b"
 HOMEPAGE = "http://pyload.org/"
+
 RDEPENDS:${PN} = "\
-  python-compression \
-  python-db \
-  python-email \
-  python-html \
-  python-imaging \
-  python-numbers \
-  python-pprint \
-  python-pycryptodome \
-  python-pycurl \
-  python-sqlite3 \
-  python-subprocess \
-  python-terminal \
-  python-unixadmin \
-  python-xmlrpc \
+  python3-compression \
+  python3-db \
+  python3-email \
+  python3-html \
+  python3-imaging \
+  python3-numbers \
+  python3-pprint \
+  python3-pycryptodome \
+  python3-pycurl \
+  python3-sqlite3 \
+  python3-terminal \
+  python3-unixadmin \
+  python3-xmlrpc \
 "
 RRECOMMENDS:${PN} = "unrar"
 
-PV = "0.4.20"
+PV = "0.5.0"
 
-inherit update-rc.d
+inherit update-rc.d setuptools3_legacy
 
-SRCREV = "1f29cd14d4c3d90d3249d20165a21c2b04ffed26"
-SRC_URI = "git://gitlab.com/jack2015/pyload.git;protocol=https;branch=stable \
+SRC_URI = "git://github.com/pyload/pyload.git;branch=main;protocol=https \
 	file://pyload.init \
-	file://pyload.tar.gz.defaults"
+"
 
 S = "${WORKDIR}/git"
 
-FILES:${PN} = "/usr/pyload/* /etc/*"
+FILES:${PN} = "/usr/* /etc/*"
 
 INITSCRIPT_NAME = "${PN}"
 INITSCRIPT_PARAMS = "defaults 60 "
 
 do_compile() {
-	python2 -m compileall ${S}
+	python3 -m compileall ${S}
 }
 
-do_install() {
+do_install:append() {
 	install -d ${D}/etc/init.d
-	install -d ${D}/usr/pyload
-
-	cp -r ${S}/icons ${D}/usr/pyload
-	cp -r ${S}/locale ${D}/usr/pyload
-	cp -r ${S}/module ${D}/usr/pyload
-	cp -r ${S}/scripts ${D}/usr/pyload
-	install -m 755 ${S}/pyLoadCli.py ${D}/usr/pyload
-	install -m 755 ${S}/pyLoadCore.py ${D}/usr/pyload
-	install -m 755 ${S}/systemCheck.py ${D}/usr/pyload
-	cp ${WORKDIR}/pyload.tar.gz.defaults ${D}/usr/pyload/pyload-defaults.tar.gz
-	
 	install -m 0755 ${WORKDIR}/pyload.init ${D}/etc/init.d/pyload
 }
 
+include python-package-split.inc

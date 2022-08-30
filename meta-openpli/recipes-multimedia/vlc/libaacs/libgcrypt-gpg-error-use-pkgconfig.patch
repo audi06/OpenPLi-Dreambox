@@ -177,4 +177,3 @@ index 6cf482f..51e6d02 100644
      ifelse([$3], , :, [$3])
    fi
    AC_SUBST(LIBGCRYPT_CFLAGS)
-

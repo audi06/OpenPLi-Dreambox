@@ -3,9 +3,7 @@ MAINTAINER = "Open Vision Developers"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-
-SRC_URI = "${GIT_SITE}/NewVirtualKeyBoard.git;protocol=https;branch=master"
+SRC_URI = "git://github.com/OpenVisionE2/NewVirtualKeyBoard.git;protocol=https;branch=master"
 
 # don't inherit allarch, it can't work with arch-dependent RDEPENDS
 inherit gitpkgv distutils-openplugins gettext
@@ -18,7 +16,7 @@ PKGV = "1.0+git${GITPKGV}"
 FILES:${PN} = "/usr/"
 
 do_compile() {
-	python2 -O -m compileall ${S}${libdir}/enigma2/python/
+	python3 -O -m compileall ${S}${libdir}/enigma2/python/
 }
 
 do_install() {

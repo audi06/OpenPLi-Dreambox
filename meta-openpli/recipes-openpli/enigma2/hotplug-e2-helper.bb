@@ -8,7 +8,8 @@ inherit gitpkgv
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/hotplug-e2-helper.git;protocol=https;branch=master"
+GITHUB_URI ?= "git://github.com"
+SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

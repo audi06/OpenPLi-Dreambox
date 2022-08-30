@@ -9,29 +9,26 @@ PKGVERSION = "5.0-r4"
 PV = "${PKGVERSION}-${SRCPV}"
 PKGV = "${PKGVERSION}-${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/enigma2-plugin-extensions-lcd4linux-ihad-source-copy.git;protocol=https;branch=master"
+SRC_URI = "git://github.com/eriksl/enigma2-plugin-extensions-lcd4linux-ihad-source-copy.git;protocol=https;branch=master"
 
 RDEPENDS:${PN} += "\
 	png-util \
 	pydpflib \
-	python-codecs \
-	python-ctypes \
-	python-datetime \
-	python-email \
-	python-image \
-	python-imaging \
-	python-mutagen \
-	python-pyusb \
-	python-shell \
-	python-simplejson \
-	python-subprocess \
-	python-textutils \
-	python-zlib \
+	python3-codecs \
+	python3-ctypes \
+	python3-datetime \
+	python3-email \
+	python3-image \
+	python3-imaging \
+	python3-mutagen \
+	python3-pyusb \
+	python3-shell \
+	python3-simplejson \
 "
 
 S = "${WORKDIR}/git"
 
-inherit gitpkgv pythonnative
+inherit gitpkgv python3native
 
 do_compile() {
 	python -m compileall ${S}/usr/lib
@@ -43,8 +40,8 @@ do_install() {
 }
 
 FILES:${PN} = "\
-	${libdir}/python2.7 \
-	${libdir}/python2.7/site-packages \
+	${libdir}/python3.10 \
+	${libdir}/python3.10/site-packages \
 	${libdir}/enigma2/python/Components/Renderer/PixmapLcd4linux.py* \
 	${libdir}/enigma2/python/Plugins/Extensions/LCD4linux \
 	${sysconfdir}/enigma2/lcd4config*"

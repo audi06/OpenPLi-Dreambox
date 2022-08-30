@@ -1,11 +1,13 @@
 DESCRIPTION = "Driver for Realtek USB wireless devices"
 HOMEPAGE = "http://www.realtek.com/"
 SECTION = "kernel/modules"
-require conf/license/license-gplv2.inc
+LICENSE = "GPL-2.0-only"
+
+LIC_FILES_CHKSUM = "file://README.md;md5=ca170803f8c67c0af58fc5dfbfc76863"
 
 inherit module machine_kernel_pr
 
-SRC_URI = "git://gitlab.com/jack2015/rtl8188eu.git;protocol=https;branch=master"
+SRC_URI = "git://github.com/lwfinger/rtl8188eu.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

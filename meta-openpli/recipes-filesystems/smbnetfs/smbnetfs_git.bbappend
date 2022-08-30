@@ -1,7 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-PV = "0.6.2+git${SRCPV}"
-
 SRC_URI += "  \
 			file://smbnetfs.common.conf \
 			file://smbnetfs.user.conf \

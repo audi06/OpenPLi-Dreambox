@@ -184,12 +184,9 @@ automount() {
 		fi
 	fi
 
-	# label may not be a used mountpoint or local directory
+	# Check if we already have this mount point
 	if [ ! -z "${LABEL}" ] && [ -d /media/$LABEL ]; then
-		# and something is mounted on it
-		mountpoint -q /media/$LABEL && LABEL=
-		# or not an empty directory
-		test -z "$(ls -A /media/$LABEL)" || LABEL=
+		LABEL=
 	fi
 
 	# If no label, use the device name
