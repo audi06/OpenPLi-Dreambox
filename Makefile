@@ -53,6 +53,7 @@ BBLAYERS ?= \
 	$(CURDIR)/openembedded-core/meta \
 	$(CURDIR)/meta-openpli \
 	$(CURDIR)/meta-dreambox \
+	$(CURDIR)/meta-python2 \
 	$(CURDIR)/meta-qt6
 
 CONFFILES = \
