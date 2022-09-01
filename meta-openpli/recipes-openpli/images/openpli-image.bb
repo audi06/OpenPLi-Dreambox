@@ -7,12 +7,13 @@ IMAGE_INSTALL = "\
 	avahi-daemon \
 	ca-certificates \
 	cifs-utils \
+	cronie \
+	dhrystone \
 	distro-feed-configs \
 	dropbear \
 	e2fsprogs-e2fsck \
 	e2fsprogs-mke2fs \
 	e2fsprogs-tune2fs \
-	fakelocale \
 	fuse-exfat \
 	glibc-binary-localedata-en-gb \
 	hdparm \
@@ -26,6 +27,7 @@ IMAGE_INSTALL = "\
 	packagegroup-base \
 	packagegroup-core-boot \
 	parted \
+	pigz \
 	python3-ipaddress  \
 	python3-netifaces \
 	python3-pysmb \
@@ -36,6 +38,7 @@ IMAGE_INSTALL = "\
 	tzdata \
 	volatile-media \
 	vsftpd \
+	xz \
 "
 
 export IMAGE_BASENAME = "openpli"

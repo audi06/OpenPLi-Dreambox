@@ -1,0 +1,109 @@
+diff --git a/tools/enigma2.sh.in b/tools/enigma2.sh.in
+index 875376e14..4b6975374 100755
+--- a/tools/enigma2.sh.in
++++ b/tools/enigma2.sh.in
+@@ -41,6 +41,104 @@ while : ; do
+ 		@bindir@/enigma2_pre_start.sh
+ 	fi
+ 
++	if [ -f @sysconfdir@/resolvconf.conf ]; then
++		if [ ! -f @sysconfdir@/resolv.conf ]; then
++			ipadress=$( sed -ne 's#.*=\([^"<]*\).*#\1#p' @sysconfdir@/resolvconf.conf )
++			ln -sfn ${ipadress} @sysconfdir@/resolv.conf
++		fi
++	fi
++	#  dreambox barry allen mount
++	if [ $(uname -n) == "dm7080" -o $(uname -n) == "dm820" -o $(uname -n) == "dm520" -o $(uname -n) == "dm920" -o $(uname -n) == "dm900" ]; then
++		DISK=$(grep "/media/ba" /proc/mounts | awk '{gsub("/media/ba",""); print $1}' | head -n 1)
++		umount -f /media/ba
++		sleep 1
++		umount -f ${DISK}
++		sleep 1
++		mkdir -p /media/ba
++		sleep 1
++		mount ${DISK} /media/ba
++		sleep 1
++	fi
++
++	# picon muunt
++	if [ -d "/data/picon" ]                && [[ ! -L "/data/picon" ]]; then
++		picon=/data/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/picons/piconSList" ]       && [[ ! -L "/picons/piconSList" ]] ; then
++		picon=/picons/piconSList;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/usr/share/enigma2/picon" ] && [[ ! -L "/usr/share/enigma2/picon" ]]; then
++		picon=/usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/ba/picon" ]          && [[ ! -L "/media/ba/picon" ]] ; then
++		picon=/media/ba/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/ba/picon_220x132" ]  && [[ ! -L "/media/ba/picon_220x132" ]]; then
++		picon=/media/ba/picon_220x132;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/hdd/picon" ]         && [[ ! -L "/media/hdd/picon" ]] ; then
++		picon=/media/hdd/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/hdd/picon_220x132" ] && [[ ! -L "/media/hdd/picon_220x132" ]] ; then
++		picon=/media/hdd/picon_220x132;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/usb/picon" ]         && [[ ! -L "/media/usb/picon" ]] ; then
++		picon=/media/usb/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/mmc/picon" ]         && [[ ! -L "/media/mmc/picon" ]] ; then
++		picon=/media/mmc/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/mmcblk1p1/picon" ]   && [[ ! -L "/media/mmcblk1p1/picon" ]] ; then
++		picon=/media/mmcblk1p1/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/media/sdcard/picon" ]      && [[ ! -L "/media/sdcard/picon" ]] ; then
++		picon=/media/sdcard/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	elif [ -d "/picon" ]                   && [[ ! -L "/picon" ]] ; then
++		picon=/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	else
++		rm -rf /usr/share/enigma2/picon > /dev/null 2>&1;
++		picon=/usr/share/enigma2/picon;
++		mkdir -p ${picon} > /dev/null 2>&1;
++		ln -sfn ${picon} /usr/share/enigma2/picon_50x30;
++		ln -sfn ${picon} /usr/share/enigma2/picon_220x132;
++	fi;
++
++	if [ ! $( grep "config.misc.hotkey.green=" /etc/enigma2/settings ) ]; then
++		echo "config.misc.hotkey.green=Module/Screens.PluginBrowser/PluginBrowser" >>/etc/enigma2/settings
++	fi
++	if [ ! $( grep "config.misc.hotkey.yellow=" /etc/enigma2/settings ) ]; then
++		echo "config.misc.hotkey.yellow=Module/Screens.ScanSetup/ScanSetup" >>/etc/enigma2/settings
++	fi
++	if [ ! $( grep "config.usage.frontled_color=" /etc/enigma2/settings ) ]; then
++		echo "config.usage.frontled_color=1" >>/etc/enigma2/settings
++	fi
++
+ 	# start enigma
+ 	sync
+ 	if [ $DEBUG_LVL -lt 4 ]; then

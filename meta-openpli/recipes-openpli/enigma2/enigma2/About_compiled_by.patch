@@ -1,0 +1,15 @@
+diff --git a/lib/python/Screens/About.py b/lib/python/Screens/About.py
+index 1e513691c..479f55b84 100644
+--- a/lib/python/Screens/About.py
++++ b/lib/python/Screens/About.py
+@@ -29,7 +29,9 @@ class About(Screen):
+ 		self.setTitle(_("About"))
+ 		hddsplit = parameters.get("AboutHddSplit", 1)
+ 
+-		AboutText = _("Hardware: ") + about.getHardwareTypeString() + "\n"
++		AboutText = _("Compiled by: ") + "audi06_19" + "\n"
++		AboutText += _("SuPPort: ") + "https://www.dreamosat-forum.com" + "\n\n"
++		AboutText += _("Hardware: ") + about.getHardwareTypeString() + "\n"
+ 		cpu = about.getCPUInfoString()
+ 		AboutText += _("CPU: ") + cpu + "\n"
+ 		AboutText += _("Image: ") + about.getImageTypeString() + "\n"
