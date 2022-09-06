@@ -1,10 +1,7 @@
-/bitbake/
 /build/
 /.deps/
 !/meta-openpli/
 !/meta-local/
-/meta-python2/
-/meta-openembedded/
 /openembedded-core/
 /sources
 /meta-local/recipes-local/
@@ -13,4 +10,3 @@
 site.conf
 bblayers.conf
 *~
-/meta-qt6/

@@ -4,15 +4,15 @@
 	ignore = dirty
 [submodule "meta-openembedded"]
 	path = meta-openembedded
-	url = git://git.openembedded.org/meta-openembedded
+	url = ./meta-openembedded
 	ignore = dirty
 [submodule "bitbake"]
 	path = bitbake
-	url = git://git.openembedded.org/bitbake
+	url = ./bitbake
 	ignore = dirty
 [submodule "meta-qt6"]
 	path = meta-qt6
-	url = git://code.qt.io/yocto/meta-qt6.git
+	url = ./meta-qt6
 [submodule "meta-python2"]
 	path = meta-python2
-	url = git://git.openembedded.org/meta-python2
+	url = ./meta-python2
