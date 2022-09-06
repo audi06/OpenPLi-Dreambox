@@ -1,18 +1,16 @@
-[submodule "openembedded-core"]
-	path = openembedded-core
-	url = ./openembedded-core
-	ignore = dirty
 [submodule "meta-openembedded"]
 	path = meta-openembedded
-	url = ./meta-openembedded
-	ignore = dirty
+	url = git://github.com/openembedded/meta-openembedded
+	branch = master
 [submodule "bitbake"]
 	path = bitbake
-	url = ./bitbake
-	ignore = dirty
-[submodule "meta-qt6"]
-	path = meta-qt6
-	url = ./meta-qt6
+	url = git://git.openembedded.org/bitbake
+[submodule "openembedded-core"]
+	path = openembedded-core
+	url = git://github.com/openembedded/openembedded-core
 [submodule "meta-python2"]
 	path = meta-python2
-	url = ./meta-python2
+	url = git://git.openembedded.org/meta-python2
+[submodule "meta-qt6"]
+	path = meta-qt6
+	url = git://code.qt.io/yocto/meta-qt6.git
