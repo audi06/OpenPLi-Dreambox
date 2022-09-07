@@ -16,3 +16,6 @@
 	path = meta-python2
 	url = https://git.openembedded.org/meta-python2
 	branch = master
+[submodule "meta-qt6"]
+	path = meta-qt6
+	url = https://code.qt.io/yocto/meta-qt6.git
