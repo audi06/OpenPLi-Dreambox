@@ -80,7 +80,7 @@ hash = $(shell echo $(1) | $(XSUM) | awk '{print $$1}')
 .DEFAULT_GOAL := all
 all: init
 	@echo
-	@echo "Openembedded for the OpenPLi homebuild develop(based on) environment has been initialized"
+	@echo "Openembedded for the DreamOSat homebuild develop(based on) environment has been initialized"
 	@echo "properly. Now you can start building your image, by doing either:"
 	@echo
 	@echo " make image"
@@ -130,6 +130,15 @@ update:
 
 .PHONY: all image init initialize update usage
 
+MACHINESIMS = $(MACHINESIM)
+export MACHINESIMS
+
+DISTRONET = $(DISTRONETS)
+export DISTRONET
+
+CODEWEBSITE = $(CODEWEB)
+export CODEWEBSITE
+
 BITBAKE_ENV_HASH := $(call hash, \
 	'BITBAKE_ENV_VERSION = "0"' \
 	'CURDIR = "$(CURDIR)"' \
@@ -138,8 +147,9 @@ BITBAKE_ENV_HASH := $(call hash, \
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
 	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE"' > $@
-	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
+	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE MACHINESIMS BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
 	@echo 'export MACHINE' >> $@
+	@echo 'export MACHINESIMS' >> $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 	@echo 'if [[ $$BB_NO_NETWORK -eq 1 ]]; then' >> $@
 	@echo ' export BB_SRCREV_POLICY="cache"' >> $@
@@ -173,7 +183,7 @@ $(TOPDIR)/conf/openpli.conf: $(DEPDIR)/.openpli.conf.$(OPENPLI_CONF_HASH)
 	@echo 'BB_GENERATE_MIRROR_TARBALLS = "0"' >> $@
 	@echo 'BBINCLUDELOGS = "yes"' >> $@
 	@echo 'CONF_VERSION = "2"' >> $@
-	@echo 'DISTRO = "openpli"' >> $@
+	@echo 'DISTRO = "DreamOSat"' >> $@
 	@echo 'EXTRA_IMAGE_FEATURES = "debug-tweaks"' >> $@
 	@echo 'USER_CLASSES = "buildstats"' >> $@
 

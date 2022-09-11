@@ -1,0 +1,129 @@
+# ncam.server generated automatically by NCAM 5.3
+# Read more: https://www.lonasdigital.com
+
+[reader]
+label                         = Card_Blanca
+enable                        = 0
+protocol                      = internal
+device                        = /dev/sci0
+services                      = movistar+ 1810
+caid                          = 1810
+boxid                         = XXXXXXXX
+boxkey                        = xxxxxxxxxxxxxxxx
+rsakey                        = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ecmwhitelist                  = 1810@1F1F1F:89
+detect                        = cd
+nagra_read                    = 2
+mhz                           = 500
+cardmhz                       = 368
+ident                         = 1810:000000,004001,004101
+group                         = 3
+emmcache                      = 1,3,2,0
+
+[reader]
+label                         = Camd35
+protocol                      = cs357x
+device                        = 127.0.0.1,20083
+user                          = camd35
+password                      = camd35
+cacheex                       = 1
+cacheex_maxhop                = 1
+group                         = 20
+blockemm-unknown              = 1
+blockemm-u                    = 1
+blockemm-s                    = 1
+blockemm-g                    = 1
+
+#[reader]
+#label                         = remote_newcamd
+#protocol                      = newcamd
+#device                        = peernewcamd.no-ip.org,18009
+#key                           = 0102030405060708091011121314
+#user                          = Peer1Newcamd
+#password                      = PasswdNewcamd
+#caid                          = 1810
+#ecmwhitelist                  = 1810@1F1F1F:89
+#ident                         = 1810:000000,004001,004101
+#group                         = 3
+#emmcache                      = 1,3,2,0
+
+#[reader]
+#label                         = remote_newcamd2
+#protocol                      = newcamd
+#device                        = peernewcamd2.zapto.org,19001
+#key                           = 0102030405060708091011121314
+#user                          = Peer1Newcamd2
+#password                      = PasswdNewcamd2
+#caid                          = 0100
+#ecmwhitelist                  = 0100@004106:64
+#ident                         = 0100:004106,004108,005001
+#group                         = 3
+#emmcache                      = 1,3,2,0
+
+#[reader]
+#label                         = remote_cccam
+#protocol                      = cccam
+#device                        = peercccam.no-ip.org,5005
+#user                          = Peer1CCcam
+#password                      = PasswdCCcam
+#inactivitytimeout             = 30
+#group                         = 2
+#emmcache                      = 1,3,2,0
+#blockemm-unknown              = 1
+#blockemm-u                    = 1
+#blockemm-s                    = 1
+#blockemm-g                    = 1
+#cccversion                    = 2.0.11
+#cccmaxhops                    = 2
+
+[reader]
+label                         = cacheex
+description                   = Cachex DO NOT DELETE
+protocol                      = cs378x
+device                        = 127.0.0.1,20093
+user                          = cacheex
+password                      = solocacheex
+services                      = !block fake 0500
+reconnecttimeout              = 0
+keepalive                     = 1
+cacheex                       = 3
+cacheex_maxhop                = 1
+cacheex_allow_request         = 1
+cacheex_drop_csp              = 1
+cacheex_block_fakecws         = 1
+group                         = 1,20
+emmcache                      = 1,1,3,1
+lb_weight                     = 101
+
+[reader]
+label                         = emulator
+enable                        = 0
+protocol                      = emu
+device                        = emulator
+services                      = !block fake 0500
+caid                          = 090F,0500,1801,0604,2600,FFFF,0E00,4AE1,1010
+detect                        = cd
+ident                         = 090F:000000;0500:000000,023800,021110,007400,007800;1801:000000,007301,001101,002111;0604:000000;2600:000000;FFFF:000000;0E00:000000;4AE1:000011,000014,0000FE;1010:000000
+group                         = 1
+emmcache                      = 2,1,2,1
+emu_auproviders               = 0604:010200;0E00:000000;4AE1:000011,000014,0000FE;1010:000000
+emu_datecodedenabled          = 1
+
+[reader]
+label                         = SoftCam.Key
+enable                        = 0
+protocol                      = constcw
+device                        = /var/tuxbox/config/SoftCam.Key
+services                      = !block fake 0500
+caid                          = 0D00,0D02,090F,0500,1801,0604,2600,FFFF,0E00,4AE1,1010,06AD
+ident                         = 0D00:000000,000004,000010,000014,000020,0000C0,0000C4,0000C8,0000CC;0D02:000000,00008C,0000A0,0000A4,0000A8;090F:000000;0500:000000,030B00,023800,021110,007400,007800;1801:000000,007301,001101;0604:000000;2600:000000,000001;FFFF:000000;0E00:000000;4AE1:000011,000014,0000FE;1010:000000
+group                         = 2
+
+[reader]
+label                         = myconstantcw
+enable                        = 0
+protocol                      = constcw
+device                        = /var/tuxbox/config/constant.cw
+services                      = !block fake 0500
+caid                          = 0D00,0D02,090F,0500,1801,0604,2600,FFFF,0E00,4AE1,1010,06AD
+group                         = 2

@@ -16,6 +16,7 @@ PACKAGES += "\
 	enigma2-plugin-extensions-transmission \
 	enigma2-plugin-systemplugins-systemtime \
 	"
+
 RDEPENDS:enigma2-plugin-extensions-mosaic = "aio-grab"
 RDEPENDS:enigma2-plugin-extensions-fancontrol2 = "smartmontools hdparm"
 RDEPENDS:enigma2-plugin-extensions-bonjour = "avahi-daemon"
@@ -50,6 +51,8 @@ FILES:enigma2-plugin-extensions-movietagger += "${sysconfdir}/enigma2/movietags"
 CONFFILES:enigma2-plugin-extensions-movietagger += "${sysconfdir}/enigma2/movietags"
 
 FILES:enigma2-plugin-extensions-babelzapper += "${sysconfdir}/babelzapper"
+FILES:enigma2-plugin-extensions-lcd4linux += "${libdir}/enigma2/python/Components/Renderer/*.pyc"
+FILES:enigma2-plugin-extensions-lcd4linux-src += "${libdir}/enigma2/python/Components/Renderer/*.py"
 
 FILES:enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
 CONFFILES:enigma2-plugin-extensions-netcaster += "${sysconfdir}/NETcaster.conf"
@@ -62,7 +65,10 @@ inherit autotools-brokensep
 S = "${WORKDIR}/git"
 
 DEPENDS = " \
+	python3-pillow \
 	python3-pyopenssl \
+	python3-pyusb \
+	python3-simplejson \
 	streamripper \
 	python3-mutagen \
 	python3-twisted \

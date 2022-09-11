@@ -11,7 +11,8 @@ PR = "r0"
 require conf/license/license-gplv2.inc
 require openplugins-distutils.inc
 
-SRC_URI:append = " file://use-setuptools-instead-of-distutils.patch"
+SRC_URI:append = " file://use-setuptools-instead-of-distutils.patch \
+	file://0001-City-add.patch"
 
 FILES:${PN} += "${sysconfdir}/enigma2/Foreca"
 CONFFILES:${PN} = "${sysconfdir}/enigma2/Foreca/City.cfg ${sysconfdir}/enigma2/Foreca/Filter.cfg"

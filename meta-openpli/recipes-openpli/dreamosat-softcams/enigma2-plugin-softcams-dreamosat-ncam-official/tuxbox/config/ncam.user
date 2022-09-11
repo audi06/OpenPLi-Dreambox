@@ -1,0 +1,70 @@
+# ncam.user generated automatically by NCAM 5.3
+# Read more: https://www.lonasdigital.com
+
+[account]
+user                          = visor
+pwd                           = visor
+keepalive                     = 1
+au                            = 1
+group                         = 1,2,3,4,5,6,20
+
+[account]
+user                          = camd35
+pwd                           = camd35
+failban                       = 1
+suppresscmd08                 = 0
+au                            = 1
+group                         = 1,2,3,4,5,6,20
+cacheex                       = 1
+cacheex_maxhop                = 1
+cacheex_block_fakecws         = 1
+disablecrccacheex_only_for    = 0500:020810,030830,030B00,032830,032840,032900,032920,032930,032940,032950,041A00,041900,041950,041A30,042800,042820,043330,043800,051B00,050F00,060D00;098C:000000;09C4:000000;098D:000000;0E00:000000;1811:003311,003315,023311,003341,00331B,000007,000107;0100:003311,00006C,00006D;1817:000000,00006A;1818:000000,00006C,000007;1819:000000,00006D,000007;1863:003342,003343;1883:003311,003315,003317,003342,003343;1884:000000
+cccmaxhops                    = 2
+
+[account]
+user                          = update
+pwd                           = ents
+description                   = Update Entitlements
+caid                          = 1810
+au                            = Card_Blanca
+group                         = 1,2,3,4,5,6,20
+cccignorereshare              = 0
+
+[account]
+user                          = cacheex
+pwd                           = solocacheex
+failban                       = 1
+au                            = 1
+group                         = 20
+services                      = !block fake 0500
+cacheex                       = 3
+cacheex_maxhop                = 1
+cacheex_drop_csp              = 1
+cacheex_allow_request         = 1
+cacheex_block_fakecws         = 1
+cccmaxhops                    = 2
+
+#[account]
+#user                          = nombre_peer1
+#pwd                           = password_peer1
+#allowedprotocols              = cccam
+#group                         = 1,2,3,4,20
+#uniq                          = 1
+#cccmaxhops                    = 2
+#cccreshare                    = 2
+#cccignorereshare              = 1
+#cccstealth                    = 1
+#keepalive                     = 1
+
+#[account]
+#user                          = nombre_peer2
+#pwd                           = password_peer2
+#allowedprotocols              = cccam
+#group                         = 1,2,3,4,20
+#uniq                          = 1
+#cccmaxhops                    = 2
+#cccreshare                    = 2
+#cccignorereshare              = 1
+#cccstealth                    = 1
+#keepalive                     = 1
+

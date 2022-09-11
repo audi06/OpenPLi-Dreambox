@@ -1,0 +1,96 @@
+##############################
+#    dvbapi configuration    #
+##############################
+# types:
+#	P - Priority
+#		format:
+#			P: <caid>:[<provider>]:[<srvid>]:[<ecmpid>]
+#	I - Ignore
+#		format:
+#			I: <caid>:[<provider>]:[<srvid>]:[<ecmpid>]
+#	M - Map
+#		format:
+#			M: <caid>:[<provider>]:[<srvid>]:[<ecmpid>] <target caid>:[<target provider>]
+#	D - Delay
+#		format:
+#			D: <caid>:[<provider>]:[<srvid>]:[<ecmpid>] <delay (ms)>
+#
+#
+#
+P: 1810:000000                      # Movistar+ HD
+P: 1810:004001                      # Movistar+ HD
+P: 1810:004101                      # Movistar+ HD
+P: 0100:004106                      # Movistar+
+P: 0100:004108                      # Movistar+
+P: 0100:005001                      # Movistar+
+P: 0100:00006A                      # Canal Digitaal NL
+P: 1803:000000                      # Polsat
+P: 0B01:000000                      # N+
+P: 0500:023800                      # SRG&SSR
+p: 0500:030B00                      # TNTsat
+P: 0500:032920                      # ORANGE TV
+P: 0D05:000000                      # ORF AustriaSat
+P: 1801:000000                      # TV Globo
+P: 0500:007400                      # Mezzo
+P: 0500:042400                      # BeIN Sport
+I: 0100:003311                      # BeIN Sport
+I: 1811:003311                      # BeIN Sport
+I: 1883:003311                      # BeIN Sport
+I: 1811:003315                      # BeIN Sport
+I: 1883:003315                      # BeIN Sport
+I: 0100:003315                      # BeIN Sport
+I: 0100:003317                      # BeIN Sport
+I: 1811:003317                      # BeIN Sport
+I: 1883:003317                      # BeIN Sport
+P: 0500:000000                      # Canalsat
+P: 0500:032940                      # Canalsat
+P: 0500:032830                      # Canalsat
+P: 0500:043330                      # Canalsat
+I: 0100:000000                      # Canalsat
+I: 1811:000000                      # Canalsat
+I: 1883:000000                      # Canalsat
+I: 1811:000007                      # Canalsat
+I: 1811:000107                      # Canalsat
+I: 1863:000000                      # Canalsat
+I: 1863:003342                      # Canalsat
+I: 1863:003343                      # Canalsat
+P: 1833:000000                      # SKY Deutchland
+P: 1834:000000                      # SKY Deutchland
+P: 1702:000000                      # SKY Deutchland
+P: 1722:000000                      # SKY Deutchland
+P: 09C4:000000                      # SKY Deutchland
+P: 098C:000000                      # SKY Deutchland
+P: 098D:000000                      # SKY Deutchland
+P: 0919:000000                      # SKY Italia
+P: 093B:000000                      # SKY Italia
+P: 09CD:000000                      # SKY Italia
+P: 0963:000000                      # SKY UK
+P: 1830:000000                      # HD+
+P: 1843:000000                      # HD02
+P: 1802:000000                      # TVCABO
+P: 1802:002011                      # TVCABO
+P: 1802:002111                      # TVCABO
+P: 1802:002113                      # TVCABO
+P: 1802:004801                      # TVCABO
+P: 1802:004901                      # TVCABO
+P: 0100:005211                      # Meo-0100
+P: 0100:005221                      # Meo-0100
+P: 0100:005225                      # Meo-0100
+P: 0500:041700                      # FreeX TV
+P: 0500:042700                      # SCT + Penthouse HD
+P: 0500:043800                      # Elite HD 10+
+P: 0B00:000000                      # MTV UNLIMITED
+P: 0500:040810                      # SRF
+P: 0500:042800                      # BIS TV
+P: 0500:042820                      # BIS TV
+P: 0500:043800                      # Redlight Elite HDTV
+P: 0100:000065                      # Cyfra+
+P: 0100:000068                      # Cyfra+
+P: 0100:00006C                      # TeleSat
+P: 0100:00006D                      # TeleSat
+P: 0604:000000                      # Nova
+P: 0500:041960                      # BISTV via FRANSAT
+P: 0500:041980:0BA1                 # Télé Mélody
+P: 0D95:000000                      # ORF ICE
+P: 0648:000000                      # AustriaSat
+#I: 0                               # ignore other caid

@@ -1,0 +1,50 @@
+Index: globals.h
+===================================================================
+--- globals.h	(revision 11657)
++++ globals.h	(working copy)
+@@ -360,7 +360,7 @@
+ /* ===========================
+  *			constants
+  * =========================== */
+-#define CS_VERSION				"1.20_svn"
++#define CS_VERSION				"build-DreamOSat-1.20_svn"
+ #ifndef CS_SVN_VERSION
+ # define CS_SVN_VERSION			"test"
+ #endif
+Index: webif/include/footer.html
+===================================================================
+--- webif/include/footer.html	(revision 11657)
++++ webif/include/footer.html	(working copy)
+@@ -2,6 +2,7 @@
+ 	<DIV CLASS="footer" ID="footer">
+ 	<DIV CLASS="top_link"><a href="#_top">TOP</a></DIV>
+ 		<UL CLASS="textfooter">
++			<LI CLASS="developed"><H3><font color="maroon"><B>Build: </B></font><font color="Green"><B>by. </B></font><font color="RoyalBlue"><B>audi06_19</B></font><font color="red"><B> || </B></font><font color="#3676b5"><B>Support: </B></font><A HREF="https://www.dreamosat-forum.com/board/">www.dreamosat-forum.com</A></H3></LI>
+ 			<LI CLASS="developed"><B>OSCam Webinterface developed by Streamboard Team</B></LI>
+ 			<LI><B>Current Time:</B><span id="curtime"> ##CURDATE## | ##CURTIME## </span><B>Start Time:</B> ##STARTDATE## | ##STARTTIME## <B>OSCam Run Time:</B><span id="runtime"> ##RUNTIME##</span></LI>
+ 			<LI><B>Process ID:</B> ##PROCESSID## <B>Access from:</B> ##CURIP## <B>Run as:</B> ##RUNAS## <B>##UPTIMETXT##</B><span id="uptime"> ##UPTIME##</span></LI>
+Index: webif/shutdown/pre_shutdown.html
+===================================================================
+--- webif/shutdown/pre_shutdown.html	(revision 11657)
++++ webif/shutdown/pre_shutdown.html	(working copy)
+@@ -5,6 +5,8 @@
+ 			When you use &quot;Shutdown&quot; you'll not be able to start OSCam again from this web interface!<BR>
+ 			The interface would try reload itself a few seconds after shutdown/restart.<BR>
+ 			<H4>Do you really want to shutdown/restart OSCam?</H4>
++                               <H4><font color="Green"> ...::: << </font><font color="RoyalBlue"><B>audi06_19 </B></font><font color="Green"> >>:::... </font></H4>
++                               <H4><font color="#3676b5"><B>Support: </B></font><A HREF="https://www.dreamosat-forum.com/board/">www.dreamosat-forum.com</A></H4>
+ 		</DIV>
+ 		<form action="shutdown.html" method="get">
+ 			<input type="submit" name="action" value="Shutdown" onclick="return confirm('Shutdown OSCam ?')" title="Shutdown OSCam" ##BTNDISABLED##>
+Index: webif/status/status.html
+===================================================================
+--- webif/status/status.html	(revision 11657)
++++ webif/status/status.html	(working copy)
+@@ -17,6 +17,7 @@
+ 	<div id = "charthead" ></div>
+ 	<div id = "graph" ></div>
+ </div>
++<LI CLASS="developed"><H2><font color="maroon"><B>Build: </B></font><font color="Green"><B>by. </B></font><font color="RoyalBlue"><B>audi06_19</B></font><font color="red"><B> || </B></font><font color="#3676b5"><B>Support: </B></font><A HREF="https://www.dreamosat-forum.com/board/">www.dreamosat-forum.com</A></H2></LI>
+ <DIV ID="subnav">
+ 	<UL ID="nav">
+ 		<LI><B>##HTTPOSCAMLABEL## r##CS_SVN_VERSION##</B></LI>

@@ -1,15 +1,15 @@
 diff --git a/tools/enigma2.sh.in b/tools/enigma2.sh.in
-index 875376e14..4b6975374 100755
+index 875376e14..3c873a701 100755
 --- a/tools/enigma2.sh.in
 +++ b/tools/enigma2.sh.in
-@@ -41,6 +41,104 @@ while : ; do
+@@ -41,6 +41,124 @@ while : ; do
  		@bindir@/enigma2_pre_start.sh
  	fi
  
-+	if [ -f @sysconfdir@/resolvconf.conf ]; then
-+		if [ ! -f @sysconfdir@/resolv.conf ]; then
-+			ipadress=$( sed -ne 's#.*=\([^"<]*\).*#\1#p' @sysconfdir@/resolvconf.conf )
-+			ln -sfn ${ipadress} @sysconfdir@/resolv.conf
++	if [ -f /etc/resolvconf.conf ]; then
++		if [ ! -f /etc/resolv.conf ]; then
++			ipadress=$( sed -ne 's#.*=\([^"<]*\).*#\1#p' /etc/resolvconf.conf )
++			ln -sfn ${ipadress} /etc/resolv.conf
 +		fi
 +	fi
 +	#  dreambox barry allen mount
@@ -24,7 +24,18 @@ index 875376e14..4b6975374 100755
 +		mount ${DISK} /media/ba
 +		sleep 1
 +	fi
++	
++	# files Extensions
++	if [ -d "/Extensions" ]                && [[ ! -L "/Extensions" ]]; then
++	    ln -sfn /usr/lib/enigma2/python/Plugins/Extensions /
++	fi
 +
++	# python ls files
++	if ! [ -f @bindir@/python ]            && [[ ! -L @bindir@/python ]]; then
++	    if [ -f @bindir@/python3 ]         && [[ -L @bindir@/python3 ]]; then
++                ln -sfn @bindir@/python3 @bindir@/python;
++            fi
++        fi
 +	# picon muunt
 +	if [ -d "/data/picon" ]                && [[ ! -L "/data/picon" ]]; then
 +		picon=/data/picon;
@@ -102,6 +113,15 @@ index 875376e14..4b6975374 100755
 +	fi
 +	if [ ! $( grep "config.usage.frontled_color=" /etc/enigma2/settings ) ]; then
 +		echo "config.usage.frontled_color=1" >>/etc/enigma2/settings
++	fi
++	if [ ! $( grep "config.plugins.serviceapp.servicemp3" /etc/enigma2/settings ) ]; then
++		touch /etc/enigma2/serviceapp_replaceservicemp3
++		if [ ! $( grep "config.plugins.serviceapp.servicemp3.player=exteplayer3" /etc/enigma2/settings ) ]; then
++			echo "config.plugins.serviceapp.servicemp3.player=exteplayer3" >>/etc/enigma2/settings
++		fi
++		if [ ! $( grep "config.plugins.serviceapp.servicemp3.replace=true" /etc/enigma2/settings ) ]; then
++			echo "config.plugins.serviceapp.servicemp3.replace=true" >>/etc/enigma2/settings
++		fi
 +	fi
 +
  	# start enigma

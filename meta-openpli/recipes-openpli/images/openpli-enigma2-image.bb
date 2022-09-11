@@ -28,6 +28,24 @@ EXTERNAL_WIFI_DRIVERS = " \
 	"
 
 ENIGMA2_PLUGINS = " \
+	enigma2-plugin-extensions-dreamosat-cammanager \
+	enigma2-plugin-extensions-dreamosat-downloader \
+	enigma2-plugin-extensions-dreamosat-keyupdater \
+	enigma2-plugin-extensions-dreamosat-script \
+	enigma2-plugin-extensions-epgimport \
+	enigma2-plugin-extensions-xstreamity \
+	enigma2-plugin-extensions-xtraevent \
+	enigma2-plugin-extensions-socketmmi \
+	enigma2-plugin-extensions-subssupport \
+	\
+	enigma2-plugin-softcams-dreamosat-cccam \
+	enigma2-plugin-softcams-dreamosat-ncam \
+	enigma2-plugin-softcams-dreamosat-oscam \
+	enigma2-plugin-softcams-dreamosat-oscam-emu \
+	enigma2-plugin-softcams-dreamosat-oscam-smod \
+	\
+	enigma2-plugin-settings-dreamosat \
+	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-bitrate \
@@ -48,8 +66,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-tmbd \
 	enigma2-plugin-extensions-youtube \
 	\
-	enigma2-plugin-softcams-oscam \
-	\
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-commoninterfaceassignment \
 	enigma2-plugin-systemplugins-fastscan \
@@ -65,6 +81,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
+	enigma2-plugin-systemplugins-serviceapp \
 	"
 
 DEPENDS += " \
@@ -81,6 +98,48 @@ IMAGE_INSTALL += " \
 	settings-autorestore \
 	tuxbox-common \
 	wget \
+	bash \
+	bzip2 \
+	ca-certificates \
+	libcurl \
+	ntfs-3g \
+	openresolv \
+	openssh-sftp \
+	openssh-sftp-server \
+	openvpn \
+	perl \
+	pigz \
+	python3-audio \
+	python3-compression \
+	python3-email \
+	python3-fcntl \
+	python3-future \
+	python3-html \
+	python3-image \
+	python3-imaging \
+	python3-ipaddress  \
+	python3-json \
+	python3-mechanize \
+	python3-misc \
+	python3-mmap \
+	python3-netclient \
+	python3-netifaces \
+	python3-numbers \
+	python3-pkgutil \
+	python3-pip \
+	python3-pprint \
+	python3-pycrypto \
+	python3-pyopenssl \
+	python3-pysmb \
+	python3-requests \
+	python3-shell \
+	python3-six \
+	python3-sqlite3 \
+	python3-twisted-core \
+	python3-twisted-web \
+	python3-xml \
+	tar \
+	xz \
 	${ENIGMA2_PLUGINS} \
 	${KERNEL_WIFI_DRIVERS} \
 	${EXTERNAL_WIFI_DRIVERS} \

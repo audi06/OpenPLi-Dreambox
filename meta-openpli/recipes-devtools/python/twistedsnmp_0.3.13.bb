@@ -6,9 +6,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://license.txt;md5=c6f330cac7a286df5a2a7617fdda815f"
 
 SRCNAME = "TwistedSNMP"
-SRC_URI = "${SOURCEFORGE_MIRROR}/${BPN}/${SRCNAME}-${PV}.tar.gz \
-           file://port-to-python3.patch \
-"
+SRC_URI = "${SOURCEFORGE_MIRROR}/${BPN}/${SRCNAME}-${PV}.tar.gz"
 
 S = "${WORKDIR}/${SRCNAME}-${PV}"
 

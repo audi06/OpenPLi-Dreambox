@@ -1,0 +1,60 @@
+diff --git a/plugin/ui.py b/plugin/ui.py
+index 6b7cc70..95806ea 100644
+--- a/plugin/ui.py
++++ b/plugin/ui.py
+@@ -594,7 +594,7 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			file.close()
+ 			fav1 = fav1[fav1.rfind("/") + 1:len(fav1)]
+ 		else:
+-			fav1 = "New_York_City"
++			fav1 = "Ankara"
+ 		print(pluginPrintname, "fav1 location:", fav1)
+ 		if fileExists(USR_PATH + "/fav2.cfg"):
+ 			file = open(USR_PATH + "/fav2.cfg", "r")
+@@ -602,7 +602,7 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			file.close()
+ 			fav2 = fav2[fav2.rfind("/") + 1:len(fav2)]
+ 		else:
+-			fav2 = "Moskva"
++			fav2 = "Antalya"
+ 		print(pluginPrintname, "fav2 location:", fav2)
+ 
+ 		# Get home location
+@@ -613,8 +613,8 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			file.close()
+ 			start = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
+ 		else:
+-			self.ort = "United_Kingdom/London"
+-			start = "London"
++			self.ort = "Turkey/Istanbul"
++			start = "Istanbul"
+ 		print(pluginPrintname, "home location:", self.ort)
+ 
+ 		MAIN_PAGE = "http://www.foreca.net" + "/" + pathname2url(self.ort) + "?lang=" + LANGUAGE + "&details=" + heute + "&units=" + config.plugins.foreca.units.value + "&tf=" + config.plugins.foreca.time.value
+@@ -829,7 +829,7 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			self.ort = str(file.readline().strip())
+ 			file.close()
+ 		else:
+-			self.ort = "United_Kingdom/London"
++			self.ort = "Turkey/Istanbul"
+ 		print(pluginPrintname, "home location:", self.ort)
+ 		start = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
+ 		self.Zukunft(0)
+@@ -841,7 +841,7 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			self.ort = str(file.readline().strip())
+ 			file.close()
+ 		else:
+-			self.ort = "United_States/New_York_City"
++			self.ort = "Turkey/Ankara"
+ 		fav1 = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
+ 		print(pluginPrintname, "fav1 location:", fav1)
+ 		self.Zukunft(0)
+@@ -853,7 +853,7 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			self.ort = str(file.readline().strip())
+ 			file.close()
+ 		else:
+-			self.ort = "Russia/Moskva"
++			self.ort = "Turkey/Antalya"
+ 		fav2 = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
+ 		print(pluginPrintname, "fav2 location:", fav2)
+ 		self.Zukunft(0)
