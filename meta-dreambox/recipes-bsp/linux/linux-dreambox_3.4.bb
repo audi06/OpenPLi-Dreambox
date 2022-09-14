@@ -49,14 +49,14 @@ CMDLINE_dm7080 = "bmem=512M@512M memc1=768M console=ttyS0,1000000 root=/dev/mmcb
 BRCM_PATCHLEVEL = "4.0"
 
 LINUX_VERSION = "${PV}-${BRCM_PATCHLEVEL}-${MACHINE}"
-KERNEL_IMAGETYPE_dm520 = "vmlinux.gz"
-KERNEL_IMAGETYPE_dm820 = "vmlinux.bin"
-KERNEL_IMAGETYPE_dm7080 = "vmlinux.bin"
-KERNEL_IMAGETYPES_dm520 = ""
-KERNEL_IMAGETYPES_dm820 = "vmlinux.gz"
-KERNEL_IMAGETYPES_dm7080 = "vmlinux.gz"
-KERNEL_ALT_IMAGETYPE_dm820 = "vmlinux.bin"
-KERNEL_ALT_IMAGETYPE_dm7080 = "vmlinux.bin"
+KERNEL_IMAGETYPE:dm520 = "vmlinux.gz"
+KERNEL_IMAGETYPE:dm820 = "vmlinux.bin"
+KERNEL_IMAGETYPE:dm7080 = "vmlinux.bin"
+KERNEL_IMAGETYPES:dm520 = ""
+KERNEL_IMAGETYPES:dm820 = "vmlinux.gz"
+KERNEL_IMAGETYPES:dm7080 = "vmlinux.gz"
+KERNEL_ALT_IMAGETYPE:dm820 = "vmlinux.bin"
+KERNEL_ALT_IMAGETYPE:dm7080 = "vmlinux.bin"
 
 KERNEL_ENABLE_CGROUPS = "1"
 

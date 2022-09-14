@@ -1,7 +1,7 @@
 inherit image_types
 
 IMAGEDIR = "${MACHINE}"
-IMAGEVERSION = "${DISTRO_NAME}-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${DATE}"
+IMAGEVERSION = "${DISTRO_NAME}-${DISTRO_VERSION}-${MACHINE}-${DATE}"
 IMAGEVERSION[vardepsexclude] += "DATE"
 BB_HASH_IGNORE_MISMATCH = "1"
 
@@ -16,7 +16,6 @@ CONVERSION_CMD:xz = " \
     xz -f -k -c ${XZ_COMPRESSION_LEVEL} ${XZ_DEFAULTS} --check=${XZ_INTEGRITY_CHECK} ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar > ${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.tar.xz; \
     echo "${IMAGEVERSION}" > ./imageversion; \
     zip ${IMAGEVERSION}.zip ./imageversion ./*.xz; \
-    rm -f ./*.manifest; \
     rm -f ./imageversion; \
     "
 

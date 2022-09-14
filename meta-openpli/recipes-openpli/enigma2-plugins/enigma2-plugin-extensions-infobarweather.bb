@@ -12,7 +12,3 @@ SRC_URI = "git://github.com/scriptmelvin/enigma2-plugin-extensions-infobarweathe
 
 S="${WORKDIR}/git"
 
-do_install:append() {
-	install -d ${D}/usr/lib/enigma2/python/Plugins/Extensions/InfoBarWeather/locale
-	cp -rf ${S}/build/lib/Extensions/InfoBarWeather/locale/ ${D}/${libdir}/enigma2/python/Plugins/Extensions/InfoBarWeather/
-}

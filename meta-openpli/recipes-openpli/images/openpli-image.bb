@@ -38,7 +38,7 @@ IMAGE_INSTALL = "\
 	vsftpd \
 "
 
-export IMAGE_BASENAME = "DreamOSat"
+export IMAGE_BASENAME = "openpli"
 IMAGE_LINGUAS = ""
 IMAGE_FEATURES += "package-management"
 

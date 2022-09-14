@@ -1,8 +1,8 @@
 diff --git a/plugin/ui.py b/plugin/ui.py
-index 6b7cc70..95806ea 100644
+index 84b6148..0f7fdce 100644
 --- a/plugin/ui.py
 +++ b/plugin/ui.py
-@@ -594,7 +594,7 @@ class ForecaPreview(Screen, HelpableScreen):
+@@ -579,7 +579,7 @@ class ForecaPreview(Screen, HelpableScreen):
  			file.close()
  			fav1 = fav1[fav1.rfind("/") + 1:len(fav1)]
  		else:
@@ -10,8 +10,8 @@ index 6b7cc70..95806ea 100644
 +			fav1 = "Ankara"
  		print(pluginPrintname, "fav1 location:", fav1)
  		if fileExists(USR_PATH + "/fav2.cfg"):
- 			file = open(USR_PATH + "/fav2.cfg", "r")
-@@ -602,7 +602,7 @@ class ForecaPreview(Screen, HelpableScreen):
+ 			file = open(USR_PATH + "/fav2.cfg", "r", encoding="UTF-8")
+@@ -587,7 +587,7 @@ class ForecaPreview(Screen, HelpableScreen):
  			file.close()
  			fav2 = fav2[fav2.rfind("/") + 1:len(fav2)]
  		else:
@@ -20,7 +20,7 @@ index 6b7cc70..95806ea 100644
  		print(pluginPrintname, "fav2 location:", fav2)
  
  		# Get home location
-@@ -613,8 +613,8 @@ class ForecaPreview(Screen, HelpableScreen):
+@@ -598,8 +598,8 @@ class ForecaPreview(Screen, HelpableScreen):
  			file.close()
  			start = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
  		else:
@@ -31,7 +31,7 @@ index 6b7cc70..95806ea 100644
  		print(pluginPrintname, "home location:", self.ort)
  
  		MAIN_PAGE = "http://www.foreca.net" + "/" + pathname2url(self.ort) + "?lang=" + LANGUAGE + "&details=" + heute + "&units=" + config.plugins.foreca.units.value + "&tf=" + config.plugins.foreca.time.value
-@@ -829,7 +829,7 @@ class ForecaPreview(Screen, HelpableScreen):
+@@ -814,7 +814,7 @@ class ForecaPreview(Screen, HelpableScreen):
  			self.ort = str(file.readline().strip())
  			file.close()
  		else:
@@ -40,7 +40,7 @@ index 6b7cc70..95806ea 100644
  		print(pluginPrintname, "home location:", self.ort)
  		start = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
  		self.Zukunft(0)
-@@ -841,7 +841,7 @@ class ForecaPreview(Screen, HelpableScreen):
+@@ -826,7 +826,7 @@ class ForecaPreview(Screen, HelpableScreen):
  			self.ort = str(file.readline().strip())
  			file.close()
  		else:
@@ -49,7 +49,7 @@ index 6b7cc70..95806ea 100644
  		fav1 = self.ort[self.ort.rfind("/") + 1:len(self.ort)]
  		print(pluginPrintname, "fav1 location:", fav1)
  		self.Zukunft(0)
-@@ -853,7 +853,7 @@ class ForecaPreview(Screen, HelpableScreen):
+@@ -838,7 +838,7 @@ class ForecaPreview(Screen, HelpableScreen):
  			self.ort = str(file.readline().strip())
  			file.close()
  		else:
